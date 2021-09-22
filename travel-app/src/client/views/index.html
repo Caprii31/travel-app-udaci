@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Christian Westpfahl">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Vagabond – City Guides</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <header>
+    <nav class="navbar navbar-expand-sm">
+      <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+        <a class="navbar-brand" id="home-link" href="#">
+          <span class="sr-only">Smart Vagabond – City Guides</span>
+        </a>
+      </div>
+    </nav>
+    <div id="hero" class="jumbotron text-white jumbotron-image shadow mb-0">
+      <div class="container">
+        <div id="main-heading" class="col-12">
+          <h1>
+            <span id="main-heading-contents">City Guides</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main role="main" class="container mb-3">
+    <div class="col-12">
+      <ul class="nav nav-tabs-custom">
+        <li class="nav-item active" id="nav-item-search"><a class="nav-link active" data-toggle="tab"
+            href="#tab-item-search">Search</a></li>
+        <li class="nav-item" id="nav-item-overview"><a class="nav-link" data-toggle="tab" href="#tab-item-overview">My
+            trip</a></li>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="tab-item-search" class="tab-pane active mt-3">
+          <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4 mt-3 d-flex flex-column justify-content-end">
+              <label for="country">Select country</label>
+              <select class="custom-select" name="country" id="country" onchange="Client.inputCountry()">
+                <option value="">&mdash; USA is default, or choose your country &mdash;</option>
+              </select>
+            </div>
+            <div class="col-md-3 mt-3 d-flex flex-column justify-content-end">
+              <label for="city">Enter the city you want to visit</label>
+              <input class="form-control" type="text" id="city" required placeholder="City" />
+              <div class="invalid-feedback">Please enter the name of a city</div>
+            </div>
+            <div class="col-md-3 mt-3 d-flex flex-column justify-content-end">
+              <label for="date">Enter your travel date</label>
+              <input class="form-control" id="trip-date" required>
+              <div class="invalid-feedback">Please enter a date</div>
+            </div>
+            <div class="col-md-2 mt-3 d-flex flex-column justify-content-end">
+              <button class="btn btn-primary" id="generate" type="submit">Search</button>
+            </div>
+          </form>
+          <div id="error" class="mt-3 alert alert-danger alert-dismissible fade show d-none" role="alert">
+            <p id="error-message" class="mb-0"></p>
+          </div>
+        </div>
+        <div id="tab-item-overview" class="tab-pane fade mt-4">
+          <div class="row justify-content-lg-center">
+            <div class="col-lg-8 col-md-12">
+              <div id="accordionTripOverview" class="accordion">
+                <div class="card">
+                  <div id="headingDaysUntilTrip" class="card-header bg-white">
+                    <h2 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse"
+                        data-target="#collapseDaysUntilTrip" aria-expanded="true" aria-controls="collapseDaysUntilTrip"
+                        class="d-block position-relative text-dark collapsible-link py-2 h5">Start</a>
+                    </h2>
+                  </div>
+                  <div id="collapseDaysUntilTrip" aria-labelledby="headingDaysUntilTrip"
+                    data-parent="#accordionTripOverview" class="collapse show">
+                    <div id="trip-departure" class="card-body">
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div id="headingWeatherForecast" class="card-header bg-white">
+                    <h2 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse"
+                        data-target="#collapseWeatherForecast" aria-expanded="false"
+                        aria-controls="collapseWeatherForecast"
+                        class="d-block position-relative collapsed text-dark collapsible-link py-2 h5">Weather
+                        Forecast</a></h2>
+                  </div>
+                  <div id="collapseWeatherForecast" aria-labelledby="headingWeatherForecast" class="collapse">
+                    <div class="card-body">
+                      <ul id="weather-forecast" class="list-group list-group-flush">
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="loading-status" class="d-none">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-auto d-flex align-items-center">
+    <div class="container">
+      <div class="col-12">
+        <span class="text-muted">This app uses <a href="https://www.geonames.org">GeoNames</a>, <a
+            href="https://www.weatherbit.io">Weatherbit.io</a>, <a href="https://www.dbpedia.org">DBpedia</a> and <a
+            href="https://pixabay.com">pixabay</a> to present travel information.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

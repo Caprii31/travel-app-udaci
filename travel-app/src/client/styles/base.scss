@@ -1,0 +1,242 @@
+@import "variables";
+@import "fonts";
+@import "header";
+@import "footer";
+@import "~bootstrap/scss/bootstrap";
+@import "~weather-icons-sass/sass/weather-icons-variables";
+@import "~weather-icons-sass/sass/weather-icons-core";
+@import "~weather-icons-sass/sass/weather-icons-classes";
+@import '~js-datepicker/src/datepicker';
+
+html {
+  font-size: 16px;
+  position: relative;
+  min-height: 100%;
+  hyphens: auto;
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 14px;
+  }
+}
+
+code {
+  font-size: 80%;
+}
+
+body {
+  font-family: "Cabin", sans-serif;
+  background-color: $white;
+  color: $gray-900;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.5;
+}
+
+body > .container {
+  padding: 30px 15px 30px;
+}
+
+textarea {
+  font-family: "Cabin", sans-serif;
+}
+
+.jumbotron {
+  border-radius: 0;
+  height: 50vh;
+  background-color: $primary;
+}
+
+.jumbotron-image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron {
+  @include media-breakpoint-up(sm) {
+    padding: ($jumbotron-padding * 1.5) $jumbotron-padding;
+  }
+}
+
+#main-heading {
+  padding-top: 30vh;
+}
+
+#main-heading-contents {
+  background-color: $primary;
+  padding: $table-cell-padding;
+  border-radius: $btn-border-radius;
+  text-transform: uppercase;
+}
+
+#generate {
+  width: 100%;
+}
+
+// Custom design of tabbed navigation
+.nav-tabs-custom {
+  @include media-breakpoint-up(md) {
+    .nav-item {
+      font-size: 16px;
+    }
+  }
+
+  @include media-breakpoint-up(xs) {
+    .nav-item {
+      font-size: 18px;
+    }
+  }
+
+  .nav-link.active {
+    @extend .text-dark;
+    border-bottom: $nav-tabs-border-width solid;
+    border-color: $white $black $black !important;
+    @include border-top-radius($nav-tabs-border-radius);
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: $nav-tabs-link-active-color;
+    background-color: $nav-tabs-link-active-bg;
+    border-color: $nav-tabs-link-active-border-color;
+  }
+}
+
+// Accordion style adapted from Ondrej (https://jsfiddle.net/bootstrapious/gpqfLd0w)
+.accordion {
+  border-radius: $border-radius;
+}
+
+.collapsible-link::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: $gray-900;
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 1rem;
+  display: block;
+  transition: all 0.3s;
+}
+
+.collapsible-link::after {
+  content: "";
+  width: 2px;
+  height: 14px;
+  background: $gray-900;
+  position: absolute;
+  top: calc(50% - 7px);
+  right: calc(1rem + 6px);
+  display: block;
+  transition: all 0.3s;
+}
+
+.collapsible-link[aria-expanded="true"]::after {
+  transform: rotate(90deg) translateX(-1px);
+  top: calc(50% - 6px);
+}
+
+.collapsible-link[aria-expanded="true"]::before {
+  transform: rotate(180deg);
+}
+
+// Design of weather forecast
+.wi {
+  font-size: 1.2em;
+}
+
+/* 
+  Adding a line break every fifth sentence. Solution adapted from
+  Nenad Vracar (https://stackoverflow.com/questions/36135818/every-5th-child-with-nth-child)
+  and educative (https://www.educative.io/edpresso/how-to-add-a-line-break-using-css).
+*/
+#overview-content span:nth-child(5n+5)::after{
+  content: "\a\a";
+  white-space: pre;
+}
+
+// The last sentence receives no line break.
+#overview-content span:last-child::after{
+  content: "";
+}
+
+/* 
+  Custom datepicker styles
+*/
+.qs-square {
+
+  &:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active) {
+    &:hover {
+      background: $primary;
+    }
+  }
+
+}
+
+.qs-day {
+  color: $dark-gray;
+}
+
+.qs-datepicker-container {
+  border: 1px solid $dark-gray;
+}
+
+.qs-submit {
+
+  &.qs-disabled {
+    color: $dark-gray;
+    border-color: $dark-gray;
+  }
+
+}
+
+.qs-controls {
+  background: $light-gray;
+}
+
+.qs-arrow {
+
+  &:hover {
+    &.qs-left:after {
+      border-right-color: $dark;
+    }
+
+    &.qs-right:after {
+      border-left-color: $dark;
+    }
+  }
+
+  &.qs-left:after {
+    border-right-color: $dark-gray;
+  }
+
+  &.qs-right:after {
+    border-left-color: $dark-gray;
+  }
+
+}
+
+.qs-month-year {
+
+  &:hover {
+    border-bottom: 1px solid $dark-gray;
+  }
+
+}
+
+.qs-event {
+  position: relative;
+
+  &:after {
+    background: $info;
+  }
+
+}
+
+.qs-active,
+.qs-range-start,
+.qs-range-end {
+  background: $light-blue;
+}
